@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :candidates
   resources :parties
 
+  get "signed_in_details", to: "home#signed_in_details"
   get  "sign_in", to: "sessions#new"
   post "sign_in", to: "sessions#create"
   get  "sign_up", to: "registrations#new"
