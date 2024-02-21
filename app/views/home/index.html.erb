@@ -1,0 +1,35 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="d-flex justify-content-around">
+  <p class="text-xl">Signed as <%= current_user.email %></p>
+  <%= button_to "Log out", Current.session, method: :delete %>
+</div>
+
+
+<h1>Candidates</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Office</th>
+      <th>Party</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @candidates.empty? %>
+      <tr>
+        <td colspan="3">No candidates found</td>
+      </tr>
+      <% elsif %>
+      <% @candidates.each do |c| %>
+        <tr>
+          <td><%= c.name %></td>
+          <td><%= c.office %></td>
+          <td><%= c.party.name %></td>
+        </tr>
+      <% end %>
+    <% end %>
+
+  </tbody>
+</table>
