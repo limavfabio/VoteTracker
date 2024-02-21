@@ -15,7 +15,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_123442) do
   enable_extension "plpgsql"
 
   create_table "candidates", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
+    t.string "office", null: false
     t.bigint "party_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
