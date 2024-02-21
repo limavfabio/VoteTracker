@@ -57,6 +57,7 @@ group :development do
   gem "web-console"
   gem "rails_live_reload"
   gem "faker"
+  gem "rubocop-rails"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
