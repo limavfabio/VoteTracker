@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_123442) do
     t.string "name", null: false
     t.string "office", null: false
     t.bigint "party_id", null: false
+    t.integer "votes_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["party_id"], name: "index_candidates_on_party_id"

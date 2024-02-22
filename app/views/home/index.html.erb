@@ -12,6 +12,9 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>N° Votes</th>
+      <th>Voted?</th>
+      <th>Cast Vote</th>
       <th>Office</th>
       <th>Party</th>
     </tr>
@@ -25,6 +28,9 @@
       <% @candidates.each do |c| %>
         <tr>
           <td><%= c.name %></td>
+          <td><%= c.votes_count %></td>
+          <td><%= c.votes.exists?(user: current_user) %></td>
+          <td><%= button_to "Vote", votes_path(vote: { candidate_id: c.id }), method: :post %></td>
           <td><%= c.office %></td>
           <td><%= c.party.name %></td>
         </tr>
