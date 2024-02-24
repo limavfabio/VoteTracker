@@ -82,3 +82,4 @@ production:
   database: vote_tracker_production
   username: vote_tracker
   password: <%= ENV["VOTE_TRACKER_DATABASE_PASSWORD"] %>
+  host: <%= ENV["VOTE_TRACKER_DATABASE_HOST"] %>
