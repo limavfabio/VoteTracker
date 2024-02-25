@@ -10,10 +10,11 @@ party3 = Party.create(name: 'Party C')
   Candidate.create(name: Faker::Name.unique.name, party:, office:)
 end
 
-User.create(email: 'john@example.com', password: 'password', password_confirmation: 'password', verified: true)
+User.create(email: 'john@example.com', name: 'John Doe', phone_number: '555-555-555', password: 'password',
+            password_confirmation: 'password', verified: true)
 
 25.times do
-  User.create(email: Faker::Internet.unique.email, password: 'password', password_confirmation: 'password',
+  User.create(email: Faker::Internet.unique.email, name: Faker::Name.name, phone_number: Faker::PhoneNumber.cell_phone, password: 'password', password_confirmation: 'password',
               verified: true)
 end
 
