@@ -16,12 +16,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_123442) do
 
   create_table "candidates", force: :cascade do |t|
     t.string "name", null: false
-    t.string "office", null: false
-    t.bigint "party_id", null: false
     t.integer "votes_count", default: 0
+    t.bigint "party_id", null: false
+    t.bigint "office_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["office_id"], name: "index_candidates_on_office_id"
     t.index ["party_id"], name: "index_candidates_on_party_id"
+  end
+
+  create_table "offices", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_offices_on_name", unique: true
   end
 
   create_table "parties", force: :cascade do |t|
@@ -62,6 +70,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_123442) do
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
+  add_foreign_key "candidates", "offices"
   add_foreign_key "candidates", "parties"
   add_foreign_key "sessions", "users"
   add_foreign_key "votes", "candidates"
