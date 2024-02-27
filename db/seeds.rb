@@ -4,9 +4,13 @@ party1 = Party.create(name: 'Party A')
 party2 = Party.create(name: 'Party B')
 party3 = Party.create(name: 'Party C')
 
+office1 = Office.create(name: 'Governor')
+office2 = Office.create(name: 'Mayor')
+office3 = Office.create(name: 'Councilor')
+
 8.times do
   party = [party1, party2, party3].sample
-  office = %w[Governor Mayor Councilor].sample
+  office = [office1, office2, office3].sample
   Candidate.create(name: Faker::Name.unique.name, party:, office:)
 end
 

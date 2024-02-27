@@ -1,6 +1,9 @@
 class HomeController < ApplicationController
   def index
-    @candidates = Candidate.includes(:party).order(:votes_count).reverse_order
+    @candidate = Candidate.new
+    @candidates = Candidate.includes(:party, :office).order(:votes_count).reverse_order
+    @parties = Party.all
+    @offices = Office.all
   end
 
   def signed_in_details; end

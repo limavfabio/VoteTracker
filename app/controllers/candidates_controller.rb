@@ -1,5 +1,5 @@
 class CandidatesController < ApplicationController
-  before_action :set_candidate, only: %i[ show edit update destroy ]
+  before_action :set_candidate, only: %i[show edit update destroy]
 
   # GET /candidates or /candidates.json
   def index
@@ -7,8 +7,7 @@ class CandidatesController < ApplicationController
   end
 
   # GET /candidates/1 or /candidates/1.json
-  def show
-  end
+  def show; end
 
   # GET /candidates/new
   def new
@@ -16,8 +15,7 @@ class CandidatesController < ApplicationController
   end
 
   # GET /candidates/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /candidates or /candidates.json
   def create
@@ -25,7 +23,7 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       if @candidate.save
-        format.html { redirect_to candidate_url(@candidate), notice: "Candidate was successfully created." }
+        format.html { redirect_to candidate_url(@candidate), notice: 'Candidate was successfully created.' }
         format.json { render :show, status: :created, location: @candidate }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class CandidatesController < ApplicationController
   def update
     respond_to do |format|
       if @candidate.update(candidate_params)
-        format.html { redirect_to candidate_url(@candidate), notice: "Candidate was successfully updated." }
+        format.html { redirect_to candidate_url(@candidate), notice: 'Candidate was successfully updated.' }
         format.json { render :show, status: :ok, location: @candidate }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,20 @@ class CandidatesController < ApplicationController
     @candidate.destroy!
 
     respond_to do |format|
-      format.html { redirect_to candidates_url, notice: "Candidate was successfully destroyed." }
+      format.html { redirect_to candidates_url, notice: 'Candidate was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_candidate
-      @candidate = Candidate.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def candidate_params
-      params.require(:candidate).permit(:name, :office, :party_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_candidate
+    @candidate = Candidate.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def candidate_params
+    params.require(:candidate).permit(:name, :office_id, :party_id)
+  end
 end
