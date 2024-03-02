@@ -23,7 +23,7 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       if @candidate.save
-        format.html { redirect_to candidate_url(@candidate), notice: 'Candidate was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Candidate was successfully created.' }
         format.json { render :show, status: :created, location: @candidate }
       else
         format.html { render :new, status: :unprocessable_entity }

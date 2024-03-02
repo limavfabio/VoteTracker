@@ -24,30 +24,49 @@
         <td colspan="3">No candidates found</td>
       </tr>
       <% elsif %>
-      <% @candidates.each do |c| %>
+      <% @candidates.each do |e| %>
         <tr>
-          <td><%= c.name %></td>
-          <td><%= c.votes_count %></td>
-          <td><%= c.votes.exists?(user: current_user) %></td>
-          <td><%= button_to "Vote", votes_path(vote: { candidate_id: c.id }), method: :post, class: "btn btn-primary" %></td>
-          <td><%= c.office.name %></td>
-          <td><%= c.party.name %></td>
+          <td><%= e.name %></td>
+          <td><%= e.votes_count %></td>
+          <td><%= e.votes.exists?(user: current_user) %></td>
+          <td><%= button_to "Vote", votes_path(vote: { candidate_id: e.id }), method: :post, class: "btn btn-primary" %></td>
+          <td><%= e.office.name %></td>
+          <td><%= e.party.name %></td>
         </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
 
-<%= form_with(model: @candidate, url: candidates_path, class: "d-inline-flex flex-column") do |f| %>
-  <h3>New Candidate</h3>
-  <%= f.label :name, class: "form-label" %>
-  <%= f.text_field :name, class: "form-control" %>
+<div class="justify-content-between d-flex">
+  <div>
+    <%= form_with(model: @candidate, url: candidates_path, class: "d-inline-flex flex-column") do |f| %>
+      <h3>New Candidate</h3>
+      <%= f.label :name, class: "form-label" %>
+      <%= f.text_field :name, class: "form-control" %>
+      <%= f.label :office_id, class: "form-label" %>
+      <%= f.select :office_id, @offices.map { |e| [e.name, e.id] }, class: "form-select" %>
+      <%= f.label :party_id, class: "form-label" %>
+      <%= f.select :party_id, @parties.map { |e| [e.name, e.id] }, class: "form-select" %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 
-  <%= f.label :office_id, class: "form-label" %>
-  <%= f.select :office_id, @offices.map { |o| [o.name, o.id] }, class: "form-select" %>
+  <div>
+    <%= form_with(model: @office, url: offices_path, class: "d-inline-flex flex-column") do |f| %>
+      <h3>New Office</h3>
+      <%= f.label :name, class: "form-label" %>
+      <%= f.text_field :name, class: "form-control" %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 
-  <%= f.label :party_id, class: "form-label" %>
-  <%= f.select :party_id, @parties.map { |p| [p.name, p.id] }, class: "form-select" %>
-
-  <%= f.submit %>
-<% end %>
+  <div>
+    <%= form_with(model: @party, url: parties_path, class: "d-inline-flex flex-column") do |f| %>
+      <h3>New Party</h3>
+      <%= f.label :name, class: "form-label" %>
+      <%= f.text_field :name, class: "form-control" %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
