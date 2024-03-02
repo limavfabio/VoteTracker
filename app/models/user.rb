@@ -17,6 +17,7 @@ class User < ApplicationRecord
   validates :phone_number, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, allow_nil: true, length: { minimum: 8 }
+  validates :admin, inclusion: { in: [true, false] }, presence: true
 
   normalizes :email, with: -> { _1.strip.downcase }
 

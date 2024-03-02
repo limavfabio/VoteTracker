@@ -15,7 +15,7 @@ office3 = Office.create(name: 'Councilor')
 end
 
 User.create(email: 'john@example.com', name: 'John Doe', phone_number: '555-555-555', password: 'password',
-            password_confirmation: 'password', verified: true)
+            password_confirmation: 'password', verified: true, admin: true)
 
 25.times do
   User.create(email: Faker::Internet.unique.email, name: Faker::Name.name, phone_number: Faker::PhoneNumber.cell_phone, password: 'password', password_confirmation: 'password',

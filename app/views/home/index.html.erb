@@ -38,6 +38,7 @@
   </tbody>
 </table>
 
+<% if current_user.admin? %>
 <div class="justify-content-between d-flex">
   <div>
     <%= form_with(model: @candidate, url: candidates_path, class: "d-inline-flex flex-column") do |f| %>
@@ -70,3 +71,4 @@
     <% end %>
   </div>
 </div>
+<% end %>
