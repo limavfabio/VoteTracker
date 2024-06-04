@@ -58,6 +58,7 @@ group :development do
   gem 'rails_live_reload'
   gem 'rubocop-rails'
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'solargraph'
   gem 'web-console'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -75,3 +76,7 @@ end
 gem 'authentication-zero', '~> 3.0'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem 'bcrypt', '~> 3.1.7'
+
+gem "tailwindcss-rails", "~> 2.6"
+
+gem "importmap-rails", "~> 2.0"
